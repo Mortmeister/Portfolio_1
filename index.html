@@ -15,6 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
     <link rel="stylesheet" href="./style.css" />
     <script defer src="./main.js"></script>
@@ -27,20 +31,146 @@
       <div class="header-right-side-group">
         <nav class="social-media-links-list" aria-label="Social media links">
           <a href="https://github.com/Mortmeister" aria-label="GitHub profile">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
             <span>GitHub</span>
           </a>
+
           <a
             href="https://www.linkedin.com/in/morten-lillehaug-a7324a118/"
             aria-label="LinkedIn profile"
           >
+            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
             <span>LinkedIn</span>
           </a>
         </nav>
 
-        <a class="contact-email-link" href="mailto:morlillehaug@hotmail.com"
-          >morlillehaug@hotmail.com</a
-        >
+        <a class="contact-email-link" href="mailto:morlillehaug@hotmail.com">
+          <i class="fa-solid fa-at"></i>
+          <span class="email-text">morlillehaug@hotmail.com</span>
+        </a>
       </div>
     </header>
+
+    <main
+      class="project-carousel-section"
+      id="carousel"
+      aria-roledescription="carousel"
+      aria-label="Featured projects"
+    >
+      <ul class="project-carousel-slide-list" id="carouselTrack">
+        <li class="portfolio-slide is-active" data-index="0">
+          <div class="portfolio-slide-image-wrapper">
+            <img
+              src="media/Gamehub.png"
+              alt="Screenshot of the Gamehub project homepage"
+            />
+          </div>
+          <div class="portfolio-slide-dark-overlay"></div>
+          <div class="portfolio-slide-text-content">
+            <p class="portfolio-slide-small-label">Project 01 — E-commerce</p>
+            <h1 class="portfolio-slide-heading">Gamehub</h1>
+            <p class="portfolio-slide-description">
+              A digital game storefront where players browse, preview, and buy
+              titles across every major platform.
+            </p>
+            <div class="portfolio-slide-button-group">
+              <a
+                class="action-button action-button-filled"
+                href="https://morty-gamehub.netlify.app/"
+                >Live demo</a
+              >
+              <a
+                class="action-button action-button-outline"
+                href="https://github.com/yourusername/gamehub"
+                >Repository</a
+              >
+            </div>
+          </div>
+        </li>
+
+        <li class="portfolio-slide" data-index="1">
+          <div class="portfolio-slide-image-wrapper">
+            <img
+              src="media/Blog.png"
+              alt="Screenshot of the Inspire Ink blog homepage"
+            />
+          </div>
+          <div class="portfolio-slide-dark-overlay"></div>
+          <div class="portfolio-slide-text-content">
+            <p class="portfolio-slide-small-label">
+              Project 02 — Content platform
+            </p>
+            <h1 class="portfolio-slide-heading">Inspire Ink</h1>
+            <p class="portfolio-slide-description">
+              A gaming blog hub for news, reviews, and dev insights — built
+              searchable, taggable, and easy to browse.
+            </p>
+            <div class="portfolio-slide-button-group">
+              <a
+                class="action-button action-button-filled"
+                href="https://inspireink-blog.netlify.app/"
+                >Live demo</a
+              >
+              <a
+                class="action-button action-button-outline"
+                href="https://github.com/yourusername/inspire-ink"
+                >Repository</a
+              >
+            </div>
+          </div>
+        </li>
+
+        <li class="portfolio-slide" data-index="2">
+          <div class="portfolio-slide-image-wrapper">
+            <img
+              src="./media/Science museum.png"
+              alt="Screenshot of the Community Science Museum homepage"
+            />
+          </div>
+          <div class="portfolio-slide-dark-overlay"></div>
+          <div class="portfolio-slide-text-content">
+            <p class="portfolio-slide-small-label">
+              Project 03 — Institutional site
+            </p>
+            <h1 class="portfolio-slide-heading">Community Science Museum</h1>
+            <p class="portfolio-slide-description">
+              A welcoming home for a science museum — exhibits, events, and
+              visitor info brought to life online.
+            </p>
+            <div class="portfolio-slide-button-group">
+              <a
+                class="action-button action-button-filled"
+                href="https://community-science-museum-oslo.netlify.app/"
+                >Live demo</a
+              >
+              <a
+                class="action-button action-button-outline"
+                href="https://github.com/yourusername/community-science-museum"
+                >Repository</a
+              >
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <button
+        class="carousel-arrow-button carousel-arrow-button-left"
+        id="prevBtn"
+        aria-label="Previous project"
+      ></button>
+      <button
+        class="carousel-arrow-button carousel-arrow-button-right"
+        id="nextBtn"
+        aria-label="Next project"
+      ></button>
+
+      <p
+        class="carousel-slide-counter-text"
+        id="carouselCounter"
+        aria-hidden="true"
+      >
+        <span id="counterCurrent">1</span> / 3
+      </p>
+    </main>
   </body>
 </html>

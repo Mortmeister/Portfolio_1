@@ -13,9 +13,8 @@
   --font-paragraphs: "Inter", system-ui, sans-serif;
   --font-small-labels: "JetBrains Mono", monospace;
 
-  --header-strip-height: 64px;
-
-  --transition-speed: cubic-bezier(0.4, 0, 0.2, 1);
+  --header-strip-height: 84px;
+  --transition-speed: 10ms;
 }
 
 * {
@@ -33,7 +32,6 @@ body {
   background: var(--color-background);
   color: var(--color-text-main);
   font-family: var(--font-paragraphs);
-  -webkit-font-smoothing: antialiased;
   overflow: hidden;
 }
 
@@ -74,14 +72,13 @@ img {
   background: var(--color-surface-dark);
   border-bottom: 1px solid var(--color-border-line);
   position: relative;
-  z-index: 20;
 }
 
 .my-name-logo {
   font-family: var(--font-headings);
   font-weight: 600;
   font-size: 1.15rem;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.01rem;
   color: var(--color-text-main);
   white-space: nowrap;
 }
@@ -103,43 +100,264 @@ img {
   align-items: center;
   gap: 7px;
   color: var(--color-text-muted-gray);
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 500;
-  transition: color 0.2s var(--transition-speed);
+  transition: color var(--transition-speed);
 }
 
 .social-media-links-list a:hover {
   color: var(--color-accent-orange-light);
 }
 
-.social-media-links-list svg {
+.social-media-links-list i {
   flex-shrink: 0;
+  font-size: 1rem;
 }
 
 .social-media-links-list span {
   display: none;
 }
 
-@media (min-width: 640px) {
-  .social-media-links-list span {
-    display: inline;
-  }
-}
-
 .contact-email-link {
   font-family: var(--font-small-labels);
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--color-text-muted-gray);
   padding: 6px 12px;
   border: 1px solid var(--color-border-line);
-  border-radius: 999px;
-  transition:
-    border-color 0.2s var(--transition-speed),
-    color 0.2s var(--transition-speed);
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   white-space: nowrap;
 }
 
 .contact-email-link:hover {
   border-color: var(--color-accent-orange);
   color: var(--color-accent-orange-light);
+}
+
+.contact-email-link i {
+  flex-shrink: 0;
+  font-size: 1rem;
+  display: inline;
+}
+
+.social-media-links-list span {
+  display: none;
+}
+
+.email-text {
+  display: none;
+}
+
+.project-carousel-section {
+  position: relative;
+  height: calc(100dvh - var(--header-strip-height));
+  width: 100%;
+  overflow: hidden;
+}
+
+.project-carousel-slide-list {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.portfolio-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s var(--transition-speed);
+}
+
+.portfolio-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.portfolio-slide-image-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--color-surface-dark);
+}
+
+.portfolio-slide-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.portfolio-slide-dark-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    var(--color-overlay-top) 0%,
+    rgba(21, 17, 13, 0.35) 45%,
+    var(--color-overlay-bottom) 100%
+  );
+}
+
+.portfolio-slide-text-content {
+  position: absolute;
+  bottom: 40px;
+  padding: 0 7% 9%;
+  max-width: 780px;
+}
+
+.portfolio-slide.is-active .portfolio-slide-text-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-slide-small-label {
+  font-family: var(--font-small-labels);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-orange-light);
+  margin-bottom: 14px;
+}
+
+/* Font size is clamped between min 2.2 and max 4.2 rem */
+.portfolio-slide-heading {
+  font-family: var(--font-headings);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  line-height: 1.04;
+  margin-bottom: 16px;
+}
+
+/* Font size is clamped between min 0.95 and max 1.1 rem. Max width will be equal to 60 characters */
+.portfolio-slide-description {
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  line-height: 1.55;
+  color: var(--color-text-main);
+  opacity: 0.9;
+  max-width: 60ch;
+  margin-bottom: 30px;
+}
+
+.portfolio-slide-button-group {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition:
+    color var(--transition-speed),
+    border-color 0.25s var(--transition-speed),
+    transform 0.15s var(--transition-speed);
+}
+
+.action-button-filled {
+  background: var(--color-accent-orange);
+  color: #1a1208;
+}
+
+.action-button-filled:hover {
+  background: var(--color-accent-orange-light);
+  transform: translateY(-1px);
+}
+
+.action-button-outline {
+  border: 1px solid rgba(245, 239, 230, 0.35);
+  color: var(--color-text-main);
+  backdrop-filter: blur(2px);
+}
+
+.action-button-outline:hover {
+  border-color: var(--color-accent-orange-light);
+  color: var(--color-accent-orange-light);
+}
+
+.carousel-arrow-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(21, 17, 13, 0.45);
+  border: 1px solid rgba(245, 239, 230, 0.18);
+  color: var(--color-text-main);
+  backdrop-filter: blur(4px);
+  transition:
+    background var(--transition-speed),
+    border-color var(--transition-speed),
+    color var(--transition-speed);
+}
+
+.carousel-arrow-button:hover {
+  background: rgba(224, 138, 44, 0.18);
+  border-color: var(--color-accent-orange);
+  color: var(--color-accent-orange-light);
+}
+
+.carousel-arrow-button-left {
+  left: 24px;
+}
+
+.carousel-arrow-button-right {
+  right: 24px;
+}
+
+@media (max-width: 640px) {
+  .carousel-arrow-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carousel-arrow-button-left {
+    left: 12px;
+  }
+
+  .carousel-arrow-button-right {
+    right: 12px;
+  }
+}
+
+.carousel-slide-counter-text {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  z-index: 10;
+  font-family: var(--font-small-labels);
+  font-size: 0.8rem;
+  color: var(--color-text-muted-gray);
+  letter-spacing: 0.04em;
+}
+
+#counterCurrent {
+  color: var(--color-accent-orange-light);
+}
+@media (min-width: 640px) {
+  .social-media-links-list span {
+    display: block;
+  }
+  .social-media-links-list span {
+    display: inline;
+  }
+  .email-text {
+    display: inline;
+  }
+  .contact-email-link i {
+    display: none;
+  }
 }
